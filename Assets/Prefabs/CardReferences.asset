@@ -23,7 +23,17 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 10854939570554590407
       m_GuidHigh: 1966120131431595707
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.063, y: 0.08794286}
+    m_SpecifySize: 1
     m_Name: Pikachu
     m_Texture: {fileID: 2800000, guid: 093cd4c77e0796a4bb7eb9b3d70f491b, type: 3}
+  - m_SerializedGuid:
+      m_GuidLow: 5504991731547888309
+      m_GuidHigh: 2998907459533535875
+    m_SerializedTextureGuid:
+      m_GuidLow: 1122739435789967623
+      m_GuidHigh: 3996995397264347227
+    m_Size: {x: 0.063, y: 0.08794286}
+    m_SpecifySize: 1
+    m_Name: Charmander
+    m_Texture: {fileID: 0}

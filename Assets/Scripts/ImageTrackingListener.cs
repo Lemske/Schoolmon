@@ -12,7 +12,7 @@ public class ImageTrackingListener : MonoBehaviour
     {
         foreach (var newImage in evtArgs.added)
         {
-            Debug.Log($"Image added: {newImage.referenceImage.name}");
+            Debug.Log($"Image added: {newImage.referenceImage}");
         }
 
         foreach (var updatedImage in evtArgs.updated)
