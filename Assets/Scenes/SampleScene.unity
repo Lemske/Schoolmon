@@ -156,6 +156,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imgTracker: {fileID: 151853171}
+  prefabs:
+  - {fileID: 8808374308738787435, guid: 4ae0370d2996be24e9caff99f0e525a2, type: 3}
+  - {fileID: 7911451184159655632, guid: e63314a8f17c59f49b32faaa28e60222, type: 3}
 --- !u!4 &237852452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512387470890420967, guid: 48cb3fb68c91eb94999fd99957eb0cae,

@@ -4,7 +4,7 @@ using UnityEngine.XR.ARFoundation;
 public class ImageTrackingListener : MonoBehaviour
 {
     [SerializeField] ARTrackedImageManager imgTracker;
-
+    [SerializeField] GameObject[] prefabs;
     void OnEnable() => imgTracker.trackablesChanged.AddListener(OnChanged);
     void OnDisable() => imgTracker.trackablesChanged.RemoveListener(OnChanged);
 
@@ -12,7 +12,14 @@ public class ImageTrackingListener : MonoBehaviour
     {
         foreach (var newImage in evtArgs.added)
         {
-            Debug.Log($"Image added: {newImage.referenceImage}");
+            Debug.Log($"Image added: {newImage.referenceImage.name}");
+            foreach (var prefab in prefabs)
+            {
+                if (newImage.referenceImage.name == prefab.name)
+                {
+                    Instantiate(prefab, newImage.transform.position, newImage.transform.rotation);
+                }
+            }
         }
 
         foreach (var updatedImage in evtArgs.updated)
