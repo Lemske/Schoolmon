@@ -51,12 +51,13 @@ public class ImageTrackingListener : MonoBehaviour
     {
         foreach (var newImage in evtArgs.added)
         {
-            Debug.Log($"Image added: {newImage.referenceImage.name}");
+            //Debug.Log($"Image added: {newImage.referenceImage.name}");
             foreach (var prefab in prefabs)
             {
                 if (newImage.referenceImage.name == prefab.name)
                 {
                     GameObject instantiated = Instantiate(prefab, newImage.transform.position, newImage.transform.rotation);
+                    Debug.Log($"Instantiated: {instantiated.name}");
                     instantiatedPrefabs.Add(instantiated);
                 }
             }
@@ -64,11 +65,13 @@ public class ImageTrackingListener : MonoBehaviour
 
         foreach (var updatedImage in evtArgs.updated)
         {
-            Debug.Log($"Image updated: {updatedImage.referenceImage.name}");
+            //Debug.Log($"Image updated: {updatedImage.referenceImage.name}");
             foreach (var instantiatedPrefab in instantiatedPrefabs)
             {
-                if (updatedImage.referenceImage.name == instantiatedPrefab.name)
+                Debug.Log($"Instantiated: {instantiatedPrefab.name} Updated: {updatedImage.referenceImage.name}");
+                if (instantiatedPrefab.name.Contains(updatedImage.referenceImage.name))
                 {
+                    Debug.Log($"Updating: {instantiatedPrefab.name}");
                     instantiatedPrefab.transform.position = updatedImage.transform.position;
                 }
             }
