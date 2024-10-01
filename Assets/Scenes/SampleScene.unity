@@ -156,6 +156,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   imgTracker: {fileID: 151853171}
+  library: {fileID: 11400000, guid: e442930dc21819444b8dfb211200c51a, type: 2}
   prefabs:
   - {fileID: 8808374308738787435, guid: 4ae0370d2996be24e9caff99f0e525a2, type: 3}
   - {fileID: 7911451184159655632, guid: e63314a8f17c59f49b32faaa28e60222, type: 3}
