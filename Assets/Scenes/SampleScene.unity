@@ -159,6 +159,7 @@ MonoBehaviour:
   library: {fileID: 11400000, guid: e442930dc21819444b8dfb211200c51a, type: 2}
   prefabs:
   - {fileID: 7911451184159655632, guid: e63314a8f17c59f49b32faaa28e60222, type: 3}
+  - {fileID: 7094813051164006078, guid: 961fe70225e63214184c6a722ddfd7a1, type: 3}
 --- !u!4 &237852452 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2512387470890420967, guid: 48cb3fb68c91eb94999fd99957eb0cae,
