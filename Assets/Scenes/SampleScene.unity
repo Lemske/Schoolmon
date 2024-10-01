@@ -158,7 +158,6 @@ MonoBehaviour:
   imgTracker: {fileID: 151853171}
   library: {fileID: 11400000, guid: e442930dc21819444b8dfb211200c51a, type: 2}
   prefabs:
-  - {fileID: 8808374308738787435, guid: 4ae0370d2996be24e9caff99f0e525a2, type: 3}
   - {fileID: 7911451184159655632, guid: e63314a8f17c59f49b32faaa28e60222, type: 3}
 --- !u!4 &237852452 stripped
 Transform:
@@ -184,12 +183,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: XR Origin (AR Rig)
       objectReference: {fileID: 0}
-    - target: {fileID: 2512387470528047737, guid: 48cb3fb68c91eb94999fd99957eb0cae,
-        type: 3}
-      propertyPath: m_PlanePrefab
-      value: 
-      objectReference: {fileID: 1585201990951412, guid: 886609fc1566e4c27b399f1095d6de18,
-        type: 3}
     - target: {fileID: 2512387470528047738, guid: 48cb3fb68c91eb94999fd99957eb0cae,
         type: 3}
       propertyPath: m_RootOrder
