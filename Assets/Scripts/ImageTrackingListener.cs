@@ -9,11 +9,14 @@ public class ImageTrackingListener : MonoBehaviour
     [SerializeField] ARTrackedImageManager imgTracker;
     [SerializeField] XRReferenceImageLibrary library; //TODO: This should be done in some testing script
     [SerializeField] GameObject[] prefabs;
+    private List<GameObject> instantiatedPrefabs;
     void OnEnable() => imgTracker.trackablesChanged.AddListener(OnChanged);
     void OnDisable() => imgTracker.trackablesChanged.RemoveListener(OnChanged);
 
     void Start()
     {
+        instantiatedPrefabs = new List<GameObject>();
+        Debug.Log("ImageTrackingListener Start");
         //TODO: should be done in some testing script
         HashSet<string> prefabNames = new HashSet<string>();
         foreach (var prefab in prefabs)
@@ -53,7 +56,8 @@ public class ImageTrackingListener : MonoBehaviour
             {
                 if (newImage.referenceImage.name == prefab.name)
                 {
-                    Instantiate(prefab, newImage.transform.position, newImage.transform.rotation);
+                    GameObject instantiated = Instantiate(prefab, newImage.transform.position, newImage.transform.rotation);
+                    instantiatedPrefabs.Add(instantiated);
                 }
             }
         }
@@ -61,6 +65,14 @@ public class ImageTrackingListener : MonoBehaviour
         foreach (var updatedImage in evtArgs.updated)
         {
             Debug.Log($"Image updated: {updatedImage.referenceImage.name}");
+            foreach (var instantiatedPrefab in instantiatedPrefabs)
+            {
+                if (updatedImage.referenceImage.name == instantiatedPrefab.name)
+                {
+                    instantiatedPrefab.transform.position = updatedImage.transform.position;
+                }
+            }
+
         }
 
         foreach (var removedImage in evtArgs.removed)
