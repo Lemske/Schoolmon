@@ -1,17 +1,25 @@
 using UnityEngine;
 
-public class SpawningTest : MonoBehaviour
+public class SpawningTest : IMonsterState
 {
-    private Vector3 originalScale;
+    private GameObject monster;
+    private GameObject prefab;
     private float scaleSpeed = 1.0f;
-    void Start()
+
+    public void Init(GameObject monster, Vector3 cardPosition, Quaternion cardRotation, GameObject prefab)
     {
-        originalScale = transform.localScale;
-        transform.localScale = Vector3.zero;
+        this.monster = monster;
+        this.prefab = prefab;
     }
-    void Update()
+
+    public void Update(Vector3 cardPosition, Quaternion cardRotation)
     {
-        transform.localScale = Vector3.Lerp(transform.localScale, originalScale, Time.deltaTime * scaleSpeed);
-        transform.Rotate(Vector3.up, Time.deltaTime * 30.0f);
+        monster.transform.position = cardPosition;
+        if (monster.transform.localScale != prefab.transform.localScale)
+        {
+            monster.transform.localScale = Vector3.Lerp(monster.transform.localScale, prefab.transform.localScale, Time.deltaTime * scaleSpeed);
+
+        }
+        monster.transform.Rotate(Vector3.up, Time.deltaTime * 30.0f);
     }
 }

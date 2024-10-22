@@ -1,5 +1,6 @@
 using UnityEngine;
-interface IParentCardUpdater
+public interface IParentCardUpdater
 {
-    void UpdateParentCard(Vector3 position, Quaternion rotation);
+    public void Init(Vector3 cardPosition, Quaternion cardRotation, GameObject prefab);
+    public void UpdateParentCard(Vector3 position, Quaternion rotation);
 }

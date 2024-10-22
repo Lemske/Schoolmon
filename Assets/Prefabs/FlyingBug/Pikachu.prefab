@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6622172519751297175}
   - component: {fileID: 5870957437540213683}
   - component: {fileID: 7132308587908363655}
+  - component: {fileID: -3784008907235388789}
   m_Layer: 3
   m_Name: Pikachu
   m_TagString: Untagged
@@ -109,6 +110,18 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &-3784008907235388789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2247604411703832577}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 102633f0617be1d4b971d78d0b886a01, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &8586809653680521710
 PrefabInstance:
   m_ObjectHideFlags: 0

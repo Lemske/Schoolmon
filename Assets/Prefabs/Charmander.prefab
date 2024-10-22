@@ -439,7 +439,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7386130179990379626}
-  - component: {fileID: -5219792064070418656}
+  - component: {fileID: 2463940147702122782}
   m_Layer: 3
   m_Name: Charmander
   m_TagString: Untagged
@@ -468,7 +468,7 @@ Transform:
   - {fileID: 7561630103786757976}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-5219792064070418656
+--- !u!114 &2463940147702122782
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -477,7 +477,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 7911451184159655632}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42acae5b6a9993c4fb54045acaf627ad, type: 3}
+  m_Script: {fileID: 11500000, guid: 102633f0617be1d4b971d78d0b886a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &9214038865990126993

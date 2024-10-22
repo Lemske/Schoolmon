@@ -10,8 +10,19 @@ public class MonsterManager : MonoBehaviour
         MonsterInstance monster = FindMonsterFromImage(imgName);
         if (monster != null)
         {
+            //Debug.Log("Instantiating Monster: " + monster.trackedImage.name + " at " + position);
+            Debug.Log("prefab scale: " + monster.prefab.transform.localScale);
             GameObject monsterInstance = Instantiate(monster.prefab, position, rotation);
-            monster.Instance = monsterInstance;
+            IParentCardUpdater parentCardUpdater = monsterInstance.GetComponent<IParentCardUpdater>();
+            if (parentCardUpdater != null)
+            {
+                parentCardUpdater.Init(position, rotation, monster.prefab);
+            }
+            else
+            {
+                throw new System.Exception("Missing IParentCardUpdater in Monster Prefab: " + monster.prefab.name);
+            }
+            monster.Instance = parentCardUpdater;
         }
     }
 
@@ -20,7 +31,9 @@ public class MonsterManager : MonoBehaviour
         MonsterInstance monster = FindMonsterFromImage(imgName);
         if (monster != null)
         {
-            monster.Instance.transform.position = position;
+            Debug.Log("Updating Monster: " + monster.trackedImage.name + " at " + position);
+            //monster.Instance.transform.position = position;
+            monster.Instance.UpdateParentCard(position, rotation);
         }
     }
 
@@ -61,9 +74,9 @@ public class MonsterManager : MonoBehaviour
     {
         [SerializeField] public GameObject prefab;
         [SerializeField] public Texture2D trackedImage;
-        private GameObject instance;
+        private IParentCardUpdater instance;
 
-        public GameObject Instance
+        public IParentCardUpdater Instance
         {
             get => instance;
             set => instance = value;
