@@ -3,39 +3,43 @@ using UnityEngine;
 [System.Serializable]
 public class Inactive : IMonsterState
 {
-    private GameObject monster;
-    private GameObject prefab;
+    private Monster monster;
     private Vector3 prevCardPosition;
     private Quaternion prevCardRotation;
-    private int iteration = 0;
-    [SerializeField] private float legalCardMovementRadius = 0.1f;
-    [SerializeField] private float legalCardRotationRadius = 0.1f;
-    [SerializeField] private int iterationNeeded = 5;
+    [SerializeField] private float legalCardMovementRadius = 0.01f;
+    [SerializeField] private float legalCardRotationRadius = 0.01f;
+    [SerializeField] private float timeNeeded = 4f;
+    private float currentTimeNeeded;
 
-    public void Init(GameObject monster, Vector3 cardPosition, Quaternion cardRotation, GameObject prefab)
+    public void Init(Monster monster)
     {
         monster.transform.localScale = Vector3.zero;
+        currentTimeNeeded = timeNeeded;
         this.monster = monster;
-        prevCardPosition = cardPosition;
-        prevCardRotation = cardRotation;
-        this.prefab = prefab;
+        this.prevCardPosition = monster.parentCardPosition;
+        this.prevCardRotation = monster.parentCardRotation;
     }
 
-    public void Update(Vector3 cardPosition, Quaternion cardRotation)
+    public void Update()
     {
+        Vector3 cardPosition = monster.parentCardPosition;
+        Quaternion cardRotation = monster.parentCardRotation;
+
         Debug.Log(Vector3.Distance(prevCardPosition, cardPosition) + " && " + Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized));
         if (Vector3.Distance(prevCardPosition, cardPosition) <= legalCardMovementRadius && Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized) <= legalCardRotationRadius)
         {
             Debug.Log("Inactive");
-            iteration++;
+            currentTimeNeeded -= Time.deltaTime;
+        }
+        else
+        {
+            currentTimeNeeded = timeNeeded;
         }
 
-        if (iteration >= iterationNeeded)
+        if (currentTimeNeeded <= 0)
         {
-            Monster monsterScript = monster.GetComponent<Monster>();
-            SpawningTest spawningTest = new SpawningTest();
-            spawningTest.Init(monster, prevCardPosition, prevCardRotation, prefab);
-            monsterScript.UpdateState(spawningTest);
+            monster.state = monster.spawningTest;
+            return;
         }
         prevCardPosition = cardPosition;
         prevCardRotation = cardRotation;

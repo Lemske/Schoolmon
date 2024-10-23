@@ -2,9 +2,19 @@ using UnityEngine;
 
 public class Monster : MonoBehaviour, IParentCardUpdater
 {
-    private IMonsterState state = new Inactive();
-    private Vector3 parentCardPosition;
-    private Quaternion parentCardRotation;
+    public Inactive inactive = new Inactive();
+    public SpawningTest spawningTest = new SpawningTest();
+    [SerializeField] public Vector3 WantedMonPosition { get; } = new Vector3(0, 0.5f, 0);
+    public GameObject prefab { get; set; }
+    public IMonsterState state { get; set; }
+    public Vector3 parentCardPosition { get; set; }
+    public Quaternion parentCardRotation { get; set; }
+
+    void Start()
+    {
+        state = inactive;
+    }
+
     public void UpdateState(IMonsterState state)
     {
         this.state = state;
@@ -12,9 +22,11 @@ public class Monster : MonoBehaviour, IParentCardUpdater
 
     public void Init(Vector3 cardPosition, Quaternion cardRotation, GameObject prefab)
     {
-        parentCardPosition = cardPosition;
-        parentCardRotation = cardRotation;
-        state.Init(gameObject, parentCardPosition, cardRotation, prefab);
+        this.prefab = prefab;
+        this.parentCardPosition = cardPosition;
+        this.parentCardRotation = cardRotation;
+        inactive.Init(this);
+        spawningTest.Init(this);
     }
 
     public void UpdateParentCard(Vector3 position, Quaternion rotation)
@@ -25,6 +37,17 @@ public class Monster : MonoBehaviour, IParentCardUpdater
 
     void Update()
     {
-        state.Update(parentCardPosition, parentCardRotation);
+        state.Update();
+    }
+
+    public Vector3 CalculateWantedMonPosition()
+    {
+        return parentCardPosition + parentCardRotation * WantedMonPosition;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawSphere(CalculateWantedMonPosition(), 0.01f);
     }
 }

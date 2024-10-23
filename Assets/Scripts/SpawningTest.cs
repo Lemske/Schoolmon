@@ -2,24 +2,22 @@ using UnityEngine;
 
 public class SpawningTest : IMonsterState
 {
-    private GameObject monster;
-    private GameObject prefab;
+    private Monster monster;
     private float scaleSpeed = 1.0f;
 
-    public void Init(GameObject monster, Vector3 cardPosition, Quaternion cardRotation, GameObject prefab)
+    public void Init(Monster monster)
     {
         this.monster = monster;
-        this.prefab = prefab;
     }
 
-    public void Update(Vector3 cardPosition, Quaternion cardRotation)
+    public void Update()
     {
+        Vector3 cardPosition = monster.parentCardPosition;
         monster.transform.position = cardPosition;
-        if (monster.transform.localScale != prefab.transform.localScale)
+        monster.transform.rotation = monster.parentCardRotation;
+        if (monster.transform.localScale != monster.prefab.transform.localScale)
         {
-            monster.transform.localScale = Vector3.Lerp(monster.transform.localScale, prefab.transform.localScale, Time.deltaTime * scaleSpeed);
-
+            monster.transform.localScale = Vector3.Lerp(monster.transform.localScale, monster.prefab.transform.localScale, Time.deltaTime * scaleSpeed);
         }
-        monster.transform.Rotate(Vector3.up, Time.deltaTime * 30.0f);
     }
 }

@@ -480,6 +480,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102633f0617be1d4b971d78d0b886a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  inactive:
+    legalCardMovementRadius: 0.01
+    legalCardRotationRadius: 0.01
+    timeNeeded: 4
 --- !u!1 &9214038865990126993
 GameObject:
   m_ObjectHideFlags: 0
