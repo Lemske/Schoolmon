@@ -122,11 +122,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102633f0617be1d4b971d78d0b886a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  WantedMonPosition: {x: 0, y: 0.08, z: 0.1}
   inactive:
     legalCardMovementRadius: 0.01
     legalCardRotationRadius: 0.01
     timeNeeded: 4
-  WantedMonPosition: {x: 0, y: 0.1, z: 0.1}
+  spawningTest:
+    heightOverWantedPosition: 0.1
+    curveSpeed: 1
 --- !u!1001 &8586809653680521710
 PrefabInstance:
   m_ObjectHideFlags: 0
