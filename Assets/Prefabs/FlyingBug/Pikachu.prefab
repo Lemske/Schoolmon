@@ -126,10 +126,15 @@ MonoBehaviour:
   inactive:
     legalCardMovementRadius: 0.01
     legalCardRotationRadius: 0.01
-    timeNeeded: 4
+    timeNeeded: 1
   spawningTest:
     heightOverWantedPosition: 0.1
     curveSpeed: 1
+  idleState:
+    idleMovementSpeed: 1
+    idleRotationSpeed: 1
+  despawnState:
+    legalPlayZone: {x: 0.12, y: 0.04, z: 0.2}
 --- !u!1001 &8586809653680521710
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,6 +30,7 @@ public class SpawningTest : IMonsterState
         if (t >= 1.0f)
         {
             monster.UpdateState(monster.idleState);
+            monster.despawnState.Init(monster);
             t = 0.0f;
         }
     }

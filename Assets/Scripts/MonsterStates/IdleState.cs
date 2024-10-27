@@ -18,6 +18,7 @@ public class IdleState : IMonsterState
     {
         monster.transform.position = Vector3.Lerp(monster.transform.position, monster.CalculateWantedMonPosition(), Time.deltaTime * idleMovementSpeed);
         monster.transform.rotation = Quaternion.Lerp(monster.transform.rotation, monster.parentCardRotation, Time.deltaTime * idleRotationSpeed);
+        monster.despawnState.Update();
     }
 
     private void UpdatePosition() //TODO: I wanna do something smart, but me brain tired

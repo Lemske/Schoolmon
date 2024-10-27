@@ -28,7 +28,6 @@ public class Inactive : IMonsterState
         Debug.Log(Vector3.Distance(prevCardPosition, cardPosition) + " && " + Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized));
         if (Vector3.Distance(prevCardPosition, cardPosition) <= legalCardMovementRadius && Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized) <= legalCardRotationRadius)
         {
-            Debug.Log("Inactive");
             currentTimeNeeded -= Time.deltaTime;
         }
         else
@@ -39,6 +38,7 @@ public class Inactive : IMonsterState
         if (currentTimeNeeded <= 0)
         {
             monster.state = monster.spawningTest;
+            currentTimeNeeded = timeNeeded;
             return;
         }
         prevCardPosition = cardPosition;

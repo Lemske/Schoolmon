@@ -355,10 +355,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 854961671727957572, guid: 713076fbbecfaf14e88f24525dd1ca0d,
+        type: 3}
+      propertyPath: m_TrackedImagePrefab
+      value: 
+      objectReference: {fileID: 8909696701383378213, guid: 563d5e8d270075945ae24ad959c142d1,
+        type: 3}
     - target: {fileID: 5846867813684640553, guid: 713076fbbecfaf14e88f24525dd1ca0d,
         type: 3}
       propertyPath: m_Name
       value: XR Origin
+      objectReference: {fileID: 0}
+    - target: {fileID: 6072309020463296101, guid: 713076fbbecfaf14e88f24525dd1ca0d,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8581671718340857079, guid: 713076fbbecfaf14e88f24525dd1ca0d,
         type: 3}
