@@ -6,13 +6,13 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static NetworkManager instance;
     private void Awake()
     {
-        if(instance != null && instance != this)
+        if (instance != null && instance != this)
         {
             gameObject.SetActive(false);
         }
         else
         {
-        instance = this;
+            instance = this;
             DontDestroyOnLoad(gameObject);
         }
     }
@@ -26,14 +26,11 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
     public void JoinRoom(string roomName)
     {
-        if(PhotonNetwork.PlayerList.Length <= 4)
-        {
-            PhotonNetwork.JoinRoom(roomName);
-        }
+        PhotonNetwork.JoinRoom(roomName);
     }
     [PunRPC]
     public void ChangeScene(string sceneName)
     {
         PhotonNetwork.LoadLevel(sceneName);
-    } 
+    }
 }

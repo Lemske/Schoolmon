@@ -45,7 +45,7 @@ public class MenuManager : MonoBehaviourPunCallbacks
     }
     public void OnPlayerNameUpdate(Text playerNameInput)
     {
-        print (playerNameInput.text);
+        print(playerNameInput.text);
         PhotonNetwork.NickName = playerNameInput.text;
     }
     public override void OnJoinedRoom()
@@ -60,10 +60,10 @@ public class MenuManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void UpdateLobbyUI()
     {
-        playerList.text = "";;
-        foreach(Player player in PhotonNetwork.PlayerList)
+        playerList.text = ""; ;
+        foreach (Player player in PhotonNetwork.PlayerList)
         {
-            print (player.NickName);
+            print(player.NickName);
             if (player.IsMasterClient)
             {
                 playerList.text += player.NickName + "(Host) \n";
@@ -72,15 +72,15 @@ public class MenuManager : MonoBehaviourPunCallbacks
             {
                 playerList.text += player.NickName + "\n";
             }
-            }
-                if (PhotonNetwork.IsMasterClient)
-            {
-                startGameBtn.interactable = true;
-            }
-            else
-            {
-                startGameBtn.interactable = false;
-            }
+        }
+        if (PhotonNetwork.IsMasterClient)
+        {
+            startGameBtn.interactable = true;
+        }
+        else
+        {
+            startGameBtn.interactable = false;
+        }
     }
     public void OnLeaveLobbyBtn()
     {
