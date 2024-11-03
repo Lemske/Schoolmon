@@ -25,6 +25,12 @@ public class Health : MonoBehaviour
         OnHealthChanged?.Invoke(currentHealth);
     }
 
+    void Destroy()
+    {
+
+        healthBarManager.DestroyHealthBar(this);
+    }
+
 
 
 }

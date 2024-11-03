@@ -273,6 +273,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBarPrefab: {fileID: 2366943503466002069, guid: 3f5bf41e03dd6dc4481a4b97c06f04b6,
     type: 3}
+  healthBars: []
 --- !u!114 &1053523255
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,7 +323,7 @@ Canvas:
   m_GameObject: {fileID: 1053523253}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 1
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
