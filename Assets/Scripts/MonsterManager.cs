@@ -16,7 +16,7 @@ public class MonsterManager : MonoBehaviour
             IParentCardUpdater parentCardUpdater = monsterInstance.GetComponent<IParentCardUpdater>();
             if (parentCardUpdater != null)
             {
-                parentCardUpdater.Init(position, rotation, monster.prefab);
+                parentCardUpdater.Init(position, rotation, monster.prefab, imgName);
             }
             else
             {
@@ -31,7 +31,7 @@ public class MonsterManager : MonoBehaviour
         MonsterInstance monster = FindMonsterFromImage(imgName);
         if (monster != null)
         {
-            Debug.Log("Updating Monster: " + monster.trackedImage.name + " at " + position);
+            //Debug.Log("Updating Monster: " + monster.trackedImage.name + " at " + position);
             //monster.Instance.transform.position = position;
             monster.Instance.UpdateParentCard(position, rotation);
         }

@@ -3,6 +3,7 @@ using UnityEngine;
 public class Monster : MonoBehaviour, IParentCardUpdater
 {
     [SerializeField] public Vector3 WantedMonPosition = new Vector3(0, 0.5f, 0);
+    public string monsterName { get; set; }
     public Inactive inactive = new Inactive();
     public SpawningTest spawningTest = new SpawningTest();
     public IdleState idleState = new IdleState();
@@ -22,8 +23,9 @@ public class Monster : MonoBehaviour, IParentCardUpdater
         this.state = state;
     }
 
-    public void Init(Vector3 cardPosition, Quaternion cardRotation, GameObject prefab)
+    public void Init(Vector3 cardPosition, Quaternion cardRotation, GameObject prefab, string monsterName)
     {
+        this.monsterName = monsterName;
         this.prefab = prefab;
         this.parentCardPosition = cardPosition;
         this.parentCardRotation = cardRotation;

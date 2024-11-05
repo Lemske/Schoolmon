@@ -14,6 +14,7 @@ public class SpawningTest : IMonsterState
     {
         this.monster = monster;
         this.firstPosition = monster.transform.position;
+
     }
 
     public void Update()
