@@ -25,7 +25,7 @@ public class Inactive : IMonsterState
         Vector3 cardPosition = monster.parentCardPosition;
         Quaternion cardRotation = monster.parentCardRotation;
 
-        Debug.Log(Vector3.Distance(prevCardPosition, cardPosition) + " && " + Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized));
+        //        Debug.Log(Vector3.Distance(prevCardPosition, cardPosition) + " && " + Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized));
         if (Vector3.Distance(prevCardPosition, cardPosition) <= legalCardMovementRadius && Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized) <= legalCardRotationRadius)
         {
             currentTimeNeeded -= Time.deltaTime;

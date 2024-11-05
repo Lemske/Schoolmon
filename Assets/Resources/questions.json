@@ -1,0 +1,154 @@
+{
+    "questions": [
+        {
+            "question": "What is the correct way to declare a variable in Java?",
+            "answers": [
+                "int num = 10;",
+                "num int = 10;",
+                "10 = int num;",
+                "int = num 10;"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Which keyword is used to define a class in Java?",
+            "answers": [
+                "struct",
+                "class",
+                "define",
+                "object"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "What does 'JVM' stand for?",
+            "answers": [
+                "Java Variable Machine",
+                "Java Virtual Method",
+                "Java Virtual Machine",
+                "Java Visual Machine"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "Which of the following is not a primitive data type in Java?",
+            "answers": [
+                "int",
+                "boolean",
+                "string",
+                "float"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "What is the default value of a boolean variable in Java?",
+            "answers": [
+                "true",
+                "false",
+                "null",
+                "0"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Which operator is used to compare two values in Java?",
+            "answers": [
+                "=",
+                "==",
+                "!=",
+                "<>"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "What is the size of an 'int' data type in Java?",
+            "answers": [
+                "4 bytes",
+                "2 bytes",
+                "8 bytes",
+                "16 bytes"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Which method is used to find the length of a string in Java?",
+            "answers": [
+                "size()",
+                "length()",
+                "getLength()",
+                "count()"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "Which loop is guaranteed to execute at least once?",
+            "answers": [
+                "for loop",
+                "while loop",
+                "do-while loop",
+                "if loop"
+            ],
+            "correctAnswer": 3
+        },
+        {
+            "question": "What is the access modifier for making a variable accessible within all classes in Java?",
+            "answers": [
+                "protected",
+                "private",
+                "default",
+                "public"
+            ],
+            "correctAnswer": 4
+        },
+        {
+            "question": "What is the correct syntax to create an array in Java?",
+            "answers": [
+                "int[] arr = new int[5];",
+                "int arr = [5];",
+                "int arr[] = int[5];",
+                "int arr[5] = new int[];"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Which keyword is used to create an instance of a class?",
+            "answers": [
+                "new",
+                "create",
+                "make",
+                "class"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "What is a 'constructor' in Java?",
+            "answers": [
+                "A special method to create objects",
+                "A function to delete objects",
+                "A method to clone objects",
+                "A loop for class objects"
+            ],
+            "correctAnswer": 1
+        },
+        {
+            "question": "Which of the following is used to handle exceptions in Java?",
+            "answers": [
+                "catch-throw",
+                "try-catch",
+                "try-except",
+                "handle-exception"
+            ],
+            "correctAnswer": 2
+        },
+        {
+            "question": "What is the purpose of the 'static' keyword in Java?",
+            "answers": [
+                "To make a variable constant",
+                "To define a global variable",
+                "To associate a method or variable with a class",
+                "To make a method or variable local"
+            ],
+            "correctAnswer": 3
+        }
+    ]
+}

@@ -18,17 +18,17 @@ public class Schoolimon : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (attackAction.WasPressedThisFrame())
+    /*     void Update()
         {
-
-            foreach (var health in FindObjectsByType<Health>(FindObjectsSortMode.None))
+            if (attackAction.WasPressedThisFrame())
             {
-                health.TakeDamage(10);
+
+                foreach (var health in FindObjectsByType<Health>(FindObjectsSortMode.None))
+                {
+                    health.TakeDamage(10);
+                }
             }
-        }
-    }
+        } */
 
 
 }

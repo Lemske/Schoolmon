@@ -31,7 +31,7 @@ public class MonsterManager : MonoBehaviour
         MonsterInstance monster = FindMonsterFromImage(imgName);
         if (monster != null)
         {
-            Debug.Log("Updating Monster: " + monster.trackedImage.name + " at " + position);
+            //            Debug.Log("Updating Monster: " + monster.trackedImage.name + " at " + position);
             //monster.Instance.transform.position = position;
             monster.Instance.UpdateParentCard(position, rotation);
         }
