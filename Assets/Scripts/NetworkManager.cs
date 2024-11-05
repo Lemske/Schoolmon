@@ -61,10 +61,12 @@ public class NetworkManager : MonoBehaviourPunCallbacks
         Debug.Log("Monster deselected by " + player);
         if (player.Equals(thisPlayer.ToString()))
         {
+            Debug.Log("Monster deselected " + monsterName);
             monsterName = null;
         }
         else
         {
+            Debug.Log("Monster deselected " + otherMonsterName);
             otherMonsterName = null;
         }
     }
