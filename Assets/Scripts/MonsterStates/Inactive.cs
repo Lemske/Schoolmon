@@ -72,7 +72,7 @@ public class Inactive : IMonsterState
 
             if (notLegal)
             {
-                Debug.LogError("Monster already selected");
+                Debug.Log("Monster already selected");
                 return;
             }
 
