@@ -921,7 +921,8 @@ PrefabInstance:
         type: 3}
       propertyPath: m_TrackedImagePrefab
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 8909696701383378213, guid: 563d5e8d270075945ae24ad959c142d1,
+        type: 3}
     - target: {fileID: 5846867813684640553, guid: 713076fbbecfaf14e88f24525dd1ca0d,
         type: 3}
       propertyPath: m_Name

@@ -1,3 +1,4 @@
+using Photon.Pun;
 using UnityEngine;
 [System.Serializable]
 public class DespawnState : IMonsterState
@@ -16,11 +17,15 @@ public class DespawnState : IMonsterState
 
     public void Update()
     {
-        if (!withinLegalPlayZone() || isDespawning)
+        if (!WithinLegalPlayZone() || isDespawning)
         {
             if (!isDespawning)
             {
                 isDespawning = true;
+                if (monster.monsterName == NetworkManager.monsterName) //Only the player will despawn their own monster, should be handled better and should use some math to help the two phones to understand the layout
+                {
+                    NetworkManager.instance.photonView.RPC("MonsterDeselected", RpcTarget.All, NetworkManager.thisPlayer.ToString());
+                }
             }
             monster.transform.position = Vector3.Lerp(monster.transform.position, monster.parentCardPosition, Time.deltaTime * 2);
             monster.transform.localScale = Vector3.Lerp(monster.transform.localScale, Vector3.zero, Time.deltaTime * 3);
@@ -34,7 +39,7 @@ public class DespawnState : IMonsterState
         lastCardRotation = monster.parentCardRotation;
     }
 
-    public bool withinLegalPlayZone()
+    public bool WithinLegalPlayZone()
     {
         Vector3 localPoint = Quaternion.Inverse(lastCardRotation) * (monster.parentCardPosition - lastCardPosition);
         Debug.DrawLine(Vector3.zero, localPoint, Color.red);
