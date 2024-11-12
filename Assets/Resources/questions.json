@@ -1,157 +1,247 @@
 [
-    {
-        "name": "Bugsy",
-        "questions": [
-            {
-                "question": "What is the correct way to declare a variable in Java?",
-                "answers": [
-                    "int num = 10;",
-                    "num int = 10;",
-                    "10 = int num;",
-                    "int = num 10;"
-                ],
-                "correctAnswer": 1
-            },
-            {
-                "question": "Which keyword is used to define a class in Java?",
-                "answers": [
-                    "struct",
-                    "class",
-                    "define",
-                    "object"
-                ],
-                "correctAnswer": 2
-            },
-            {
-                "question": "What does 'JVM' stand for?",
-                "answers": [
-                    "Java Variable Machine",
-                    "Java Virtual Method",
-                    "Java Virtual Machine",
-                    "Java Visual Machine"
-                ],
-                "correctAnswer": 3
-            },
-            {
-                "question": "Which of the following is not a primitive data type in Java?",
-                "answers": [
-                    "int",
-                    "boolean",
-                    "string",
-                    "float"
-                ],
-                "correctAnswer": 3
-            },
-            {
-                "question": "What is the default value of a boolean variable in Java?",
-                "answers": [
-                    "true",
-                    "false",
-                    "null",
-                    "0"
-                ],
-                "correctAnswer": 2
-            },
-            {
-                "question": "Which operator is used to compare two values in Java?",
-                "answers": [
-                    "=",
-                    "==",
-                    "!=",
-                    "<>"
-                ],
-                "correctAnswer": 2
-            },
-            {
-                "question": "What is the size of an 'int' data type in Java?",
-                "answers": [
-                    "4 bytes",
-                    "2 bytes",
-                    "8 bytes",
-                    "16 bytes"
-                ],
-                "correctAnswer": 1
-            },
-            {
-                "question": "Which method is used to find the length of a string in Java?",
-                "answers": [
-                    "size()",
-                    "length()",
-                    "getLength()",
-                    "count()"
-                ],
-                "correctAnswer": 2
-            },
-            {
-                "question": "Which loop is guaranteed to execute at least once?",
-                "answers": [
-                    "for loop",
-                    "while loop",
-                    "do-while loop",
-                    "if loop"
-                ],
-                "correctAnswer": 3
-            },
-            {
-                "question": "What is the access modifier for making a variable accessible within all classes in Java?",
-                "answers": [
-                    "protected",
-                    "private",
-                    "default",
-                    "public"
-                ],
-                "correctAnswer": 4
-            },
-            {
-                "question": "What is the correct syntax to create an array in Java?",
-                "answers": [
-                    "int[] arr = new int[5];",
-                    "int arr = [5];",
-                    "int arr[] = int[5];",
-                    "int arr[5] = new int[];"
-                ],
-                "correctAnswer": 1
-            },
-            {
-                "question": "Which keyword is used to create an instance of a class?",
-                "answers": [
-                    "new",
-                    "create",
-                    "make",
-                    "class"
-                ],
-                "correctAnswer": 1
-            },
-            {
-                "question": "What is a 'constructor' in Java?",
-                "answers": [
-                    "A special method to create objects",
-                    "A function to delete objects",
-                    "A method to clone objects",
-                    "A loop for class objects"
-                ],
-                "correctAnswer": 1
-            },
-            {
-                "question": "Which of the following is used to handle exceptions in Java?",
-                "answers": [
-                    "catch-throw",
-                    "try-catch",
-                    "try-except",
-                    "handle-exception"
-                ],
-                "correctAnswer": 2
-            },
-            {
-                "question": "What is the purpose of the 'static' keyword in Java?",
-                "answers": [
-                    "To make a variable constant",
-                    "To define a global variable",
-                    "To associate a method or variable with a class",
-                    "To make a method or variable local"
-                ],
-                "correctAnswer": 3
-            }
-        ]
-    }
+  {
+    "name": "Bugsy",
+    "questions": [
+      {
+        "question": "What is the correct way to declare a variable in Java?",
+        "answers": [
+          "int num = 10;",
+          "num int = 10;",
+          "10 = int num;",
+          "int = num 10;"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Which keyword is used to define a class in Java?",
+        "answers": ["struct", "class", "define", "object"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What does 'JVM' stand for?",
+        "answers": [
+          "Java Variable Machine",
+          "Java Virtual Method",
+          "Java Virtual Machine",
+          "Java Visual Machine"
+        ],
+        "correctAnswer": 3
+      },
+      {
+        "question": "Which of the following is not a primitive data type in Java?",
+        "answers": ["int", "boolean", "string", "float"],
+        "correctAnswer": 3
+      },
+      {
+        "question": "What is the default value of a boolean variable in Java?",
+        "answers": ["true", "false", "null", "0"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Which operator is used to compare two values in Java?",
+        "answers": ["=", "==", "!=", "<>"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What is the size of an 'int' data type in Java?",
+        "answers": ["4 bytes", "2 bytes", "8 bytes", "16 bytes"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Which method is used to find the length of a string in Java?",
+        "answers": ["size()", "length()", "getLength()", "count()"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Which loop is guaranteed to execute at least once?",
+        "answers": ["for loop", "while loop", "do-while loop", "if loop"],
+        "correctAnswer": 3
+      },
+      {
+        "question": "What is the access modifier for making a variable accessible within all classes in Java?",
+        "answers": ["protected", "private", "default", "public"],
+        "correctAnswer": 4
+      },
+      {
+        "question": "What is the correct syntax to create an array in Java?",
+        "answers": [
+          "int[] arr = new int[5];",
+          "int arr = [5];",
+          "int arr[] = int[5];",
+          "int arr[5] = new int[];"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Which keyword is used to create an instance of a class?",
+        "answers": ["new", "create", "make", "class"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "What is a 'constructor' in Java?",
+        "answers": [
+          "A special method to create objects",
+          "A function to delete objects",
+          "A method to clone objects",
+          "A loop for class objects"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Which of the following is used to handle exceptions in Java?",
+        "answers": [
+          "catch-throw",
+          "try-catch",
+          "try-except",
+          "handle-exception"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What is the purpose of the 'static' keyword in Java?",
+        "answers": [
+          "To make a variable constant",
+          "To define a global variable",
+          "To associate a method or variable with a class",
+          "To make a method or variable local"
+        ],
+        "correctAnswer": 3
+      }
+    ]
+  },
+  {
+    "name": "Realist",
+    "questions": [
+      {
+        "question": "What does XR stand for?",
+        "answers": [
+          "Extended Reality",
+          "Extra Reality",
+          "Extreme Reality",
+          "Exemplary Reality"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "In Unity, which component is essential for handling VR camera movement?",
+        "answers": ["Rigidbody", "Camera Rig", "Transform", "Mesh Renderer"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What is the purpose of a Raycast in VR development?",
+        "answers": [
+          "To handle light rendering",
+          "To detect object collisions from a specific point",
+          "To create 3D textures",
+          "To play animations"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Which device is NOT typically used in AR?",
+        "answers": [
+          "Smartphone",
+          "Head-mounted display",
+          "Desktop monitor",
+          "Tablet"
+        ],
+        "correctAnswer": 3
+      },
+      {
+        "question": "In Unity, what is the primary tool to create AR applications?",
+        "answers": ["ARKit", "AR Foundation", "Google VR", "Photon Networking"],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What is 'occlusion' in AR?",
+        "answers": [
+          "Rendering objects in the background",
+          "When virtual objects are hidden behind real-world objects",
+          "Using textures to create depth",
+          "Animating virtual objects"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Which of the following is a popular AR framework for Android?",
+        "answers": ["ARCore", "Vuforia", "ARKit", "Mixed Reality Toolkit"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "What does '6DoF' stand for in VR?",
+        "answers": [
+          "6 Dimensions of Frame",
+          "6 Degrees of Freedom",
+          "6 Directions of Focus",
+          "6 Depths of Field"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "In XR, what is a 'headset's Field of View (FOV)'?",
+        "answers": [
+          "The amount of detail it can display",
+          "The extent of the observable world at any moment",
+          "The weight of the headset",
+          "The color range the display can show"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "Which technology superimposes digital objects on the real world?",
+        "answers": [
+          "Virtual Reality",
+          "Augmented Reality",
+          "Mixed Reality",
+          "Extended Reality"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "In VR development, why is low latency important?",
+        "answers": [
+          "To reduce the app’s file size",
+          "To avoid user discomfort and motion sickness",
+          "To make the graphics look better",
+          "To extend battery life"
+        ],
+        "correctAnswer": 2
+      },
+      {
+        "question": "What is a 'Collider' component used for in Unity XR projects?",
+        "answers": [
+          "To detect interactions and collisions",
+          "To add color to objects",
+          "To set the object's position",
+          "To store audio files"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "Which XR technology requires an anchor or target to track objects?",
+        "answers": ["AR", "VR", "Mixed Reality", "None"],
+        "correctAnswer": 1
+      },
+      {
+        "question": "What is an avatar in VR environments?",
+        "answers": [
+          "A graphical representation of a user",
+          "A level in a VR game",
+          "A VR controller",
+          "A sound effect"
+        ],
+        "correctAnswer": 1
+      },
+      {
+        "question": "In AR, what does 'SLAM' stand for?",
+        "answers": [
+          "Simultaneous Localization and Mapping",
+          "Simple Location and Motion",
+          "Single Location AR Marker",
+          "Scanning, Locating, And Mapping"
+        ],
+        "correctAnswer": 1
+      }
+    ]
+  }
 ]
