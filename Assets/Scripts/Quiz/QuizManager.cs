@@ -31,8 +31,19 @@ public class QuizManager : MonoBehaviour
         // Keep waiting until the Health component is found
         while (targetHealth == null)
         {
-            targetHealth = FindObjectOfType<Health>();
-            yield return null;  // Wait a frame before checking again
+            Health[] healthComponents = FindObjectsOfType<Health>();
+            foreach (Health health in healthComponents)
+            {
+                Monster monster = health.GetComponentInParent<Monster>();
+                Debug.Log("Monster: " + monster.monsterName);
+                Debug.Log("NetworkManager: " + NetworkManager.monsterName);
+                if (monster != null && monster.monsterName == NetworkManager.monsterName)
+                {
+                    targetHealth = health;
+                    break;
+                }
+            }
+            yield return null;
         }
 
         Debug.Log("Health component assigned to QuizManager");
@@ -69,13 +80,28 @@ public class QuizManager : MonoBehaviour
         TextAsset jsonFile = Resources.Load<TextAsset>("questions");  // Load "questions.json" from Resources
         if (jsonFile != null)
         {
-            questionsAndAnswers = JsonUtility.FromJson<ListWrapper>(jsonFile.text).questions;
-            Debug.Log("Questions loaded successfully");
+            string wrappedJson = "{\"items\":" + jsonFile.text + "}";
+            ListWrapperWrapper monsterData = JsonUtility.FromJson<ListWrapperWrapper>(wrappedJson);
+
+            foreach (var monster in monsterData.items)
+            {
+                if (monster.monsterName == NetworkManager.monsterName)
+                {
+                    questionsAndAnswers = monster.questions;
+                    Debug.Log("Questions loaded successfully");
+                    break;
+                }
+            }
         }
         else
         {
             Debug.LogError("Questions file not found!");
         }
+    }
+    [System.Serializable]
+    private class ListWrapperWrapper
+    {
+        public List<MonsterWithQuestions> items;
     }
 
     // A helper wrapper class for deserialization

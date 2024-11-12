@@ -3428,6 +3428,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: bug
       objectReference: {fileID: 0}
+    - target: {fileID: 7053252914373225903, guid: 054162ea693a8704d9fb23c9f49f47ca,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7179901005683147413, guid: 054162ea693a8704d9fb23c9f49f47ca,
         type: 3}
       propertyPath: m_Enabled

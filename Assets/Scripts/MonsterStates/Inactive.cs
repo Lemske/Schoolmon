@@ -43,7 +43,8 @@ public class Inactive : IMonsterState
 
             if (NetworkManager.instance == null) //For test scene
             {
-                Debug.LogError("NetworkManager instance is null");
+                Debug.Log("NetworkManager instance is null");
+                NetworkManager.monsterName = NetworkManager.monsterName == null ? monster.monsterName : NetworkManager.monsterName;
                 return;
             }
 
