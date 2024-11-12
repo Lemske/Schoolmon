@@ -159,28 +159,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc9adf1885ae192408967508f0b59fe6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  questionsAndAnswers:
-  - question: Name of me?
-    answers:
-    - Merethe
-    - Luna
-    - Tobleronen
-    - Merethel
-    correctAnswer: 1
-  - question: My favorite beer?
-    answers:
-    - Stout
-    - Pils
-    - IPA
-    - Sour
-    correctAnswer: 3
-  - question: What is Chili?
-    answers:
-    - A chili
-    - A seal
-    - A (somwhat) dog
-    - A piggy
-    correctAnswer: 2
+  questionsAndAnswers: []
   options:
   - {fileID: 395529043}
   - {fileID: 1490589212}
@@ -188,9 +167,10 @@ MonoBehaviour:
   - {fileID: 925266978}
   currentQuestion: 0
   questionText: {fileID: 1828074119}
-  targetHealth: {fileID: 7179901005683147413, guid: 054162ea693a8704d9fb23c9f49f47ca,
-    type: 3}
+  targetHealth: {fileID: 0}
+  quizCanvas: {fileID: 1050182627}
   damageAmount: 40
+  fadeDuration: 1
 --- !u!4 &252296219
 Transform:
   m_ObjectHideFlags: 0
@@ -306,7 +286,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!1 &395529043 stripped
 GameObject:
@@ -432,6 +412,12 @@ MonoBehaviour:
 --- !u!1 &925266978 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1667467748593481760, guid: bfd527090518dc146a0a30f55cecfd22,
+    type: 3}
+  m_PrefabInstance: {fileID: 1280902477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1050182627 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 99233933002618282, guid: bfd527090518dc146a0a30f55cecfd22,
     type: 3}
   m_PrefabInstance: {fileID: 1280902477}
   m_PrefabAsset: {fileID: 0}

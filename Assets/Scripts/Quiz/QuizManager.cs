@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -124,7 +125,7 @@ public class QuizManager : MonoBehaviour
     {
         if (questionsAndAnswers.Count > 0)
         {
-            currentQuestion = Random.Range(0, questionsAndAnswers.Count);
+            currentQuestion = UnityEngine.Random.Range(0, questionsAndAnswers.Count);
 
             questionText.text = questionsAndAnswers[currentQuestion].question;
             SetAnswers();
