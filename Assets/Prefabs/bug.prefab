@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: -743151638201327525}
   - component: {fileID: 7179901005683147413}
   m_Layer: 0
-  m_Name: Bug
+  m_Name: bug
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -46,7 +46,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102633f0617be1d4b971d78d0b886a01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WantedMonPosition: {x: 0, y: 0.01, z: 0}
+  WantedMonPosition: {x: 0, y: 0.07, z: 0.06}
+  isDeadTESTING: 0
   inactive:
     legalCardMovementRadius: 0.01
     legalCardRotationRadius: 0.01

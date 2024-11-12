@@ -23,7 +23,17 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 8377975721026892337
       m_GuidHigh: 7559485767492488011
-    m_Size: {x: 0.063, y: 0.08794631}
+    m_Size: {x: 0.0859, y: 0.11991409}
     m_SpecifySize: 1
     m_Name: Bugsy
+    m_Texture: {fileID: 0}
+  - m_SerializedGuid:
+      m_GuidLow: 5414848514117852131
+      m_GuidHigh: 8418283789967055265
+    m_SerializedTextureGuid:
+      m_GuidLow: 15232430474612463600
+      m_GuidHigh: 13577715889109238475
+    m_Size: {x: 0.0859, y: 0.11991409}
+    m_SpecifySize: 1
+    m_Name: Realist
     m_Texture: {fileID: 0}

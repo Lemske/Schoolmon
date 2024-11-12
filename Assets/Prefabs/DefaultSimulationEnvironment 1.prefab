@@ -709,6 +709,16 @@ PrefabInstance:
       propertyPath: m_Image
       value: 
       objectReference: {fileID: 2800000, guid: a4a7b2318c8774444bcb02f040b0e868, type: 3}
+    - target: {fileID: 8729454608633629011, guid: c1d3191da4e8f944fa063208ccb37569,
+        type: 3}
+      propertyPath: m_ImagePhysicalSizeMeters.x
+      value: 0.0859
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729454608633629011, guid: c1d3191da4e8f944fa063208ccb37569,
+        type: 3}
+      propertyPath: m_ImagePhysicalSizeMeters.y
+      value: 0.1199141
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

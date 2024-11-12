@@ -31,6 +31,10 @@ public class QuizManager : MonoBehaviour
         // Keep waiting until the Health component is found
         while (targetHealth == null)
         {
+            if (NetworkManager.monsterName == null || NetworkManager.otherMonsterName == null)
+            {
+                yield return null;
+            }
             Health[] healthComponents = FindObjectsOfType<Health>();
             foreach (Health health in healthComponents)
             {

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBarManager : MonoBehaviour
 {
-
+    [SerializeField] private float offset = 0.2f;
     public GameObject healthBarPrefab;
     List<HealthBar> healthBars = new List<HealthBar>();
 
@@ -19,7 +19,7 @@ public class HealthBarManager : MonoBehaviour
     {
         foreach (var healthBar in healthBars)
         {
-            healthBar.transform.position = Camera.main.WorldToScreenPoint(healthBar.Health.transform.position + Vector3.up * 0.2f);
+            healthBar.transform.position = Camera.main.WorldToScreenPoint(healthBar.Health.transform.position + Vector3.up * offset);
         }
     }
 
