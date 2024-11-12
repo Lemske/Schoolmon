@@ -744,6 +744,7 @@ GameObject:
   - component: {fileID: 427584655}
   - component: {fileID: 427584654}
   - component: {fileID: 427584653}
+  - component: {fileID: 427584656}
   m_Layer: 0
   m_Name: EventSystem
   m_TagString: Untagged
@@ -822,6 +823,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &427584656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427584652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d5b3871491444d2a91b4447c336b312, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &467843789
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +3363,11 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -743151638201327525, guid: 054162ea693a8704d9fb23c9f49f47ca,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 355864837125776197, guid: 054162ea693a8704d9fb23c9f49f47ca,
         type: 3}
       propertyPath: m_ApplyRootMotion
