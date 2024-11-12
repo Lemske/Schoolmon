@@ -7,6 +7,7 @@ public class Health : MonoBehaviour
     private HealthBarManager healthBarManager;
 
     public event Action<int> OnHealthChanged;
+    private Monster monster;
 
     public int currentHealth;
     public int maxHealth;
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     {
         healthBarManager = FindFirstObjectByType<HealthBarManager>();
         healthBarManager.SpawnHealthBar(this);
+        monster = GetComponent<Monster>();
     }
 
 
@@ -23,6 +25,10 @@ public class Health : MonoBehaviour
     {
         currentHealth -= amount;
         OnHealthChanged?.Invoke(currentHealth);
+        if (currentHealth <= 0 && monster != null)
+        {
+            monster.EndGame(); //Todo: Weird implementation for this code
+        }
     }
 
     void Destroy()

@@ -11,9 +11,7 @@ public class QuizManager : MonoBehaviour
     public List<QuestionsAndAnswers> questionsAndAnswers;
     public GameObject[] options;
     public int currentQuestion;
-
     public TextMeshProUGUI questionText;
-
     public Health targetHealth;
     public GameObject quizCanvas;
     public int damageAmount;  // Damage amount to apply for a correct answer

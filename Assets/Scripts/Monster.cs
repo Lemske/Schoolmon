@@ -61,7 +61,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
         return parentCardPosition + parentCardRotation * WantedMonPosition;
     }
 
-    private void EndGame()
+    public void EndGame()
     {
         if (NetworkManager.instance != null)
         {
