@@ -48,7 +48,7 @@ public class Inactive : IMonsterState
                 return;
             }
 
-            if (monster.monsterName.Equals(NetworkManager.monsterName))
+            if (monster.monsterName.Equals(NetworkManager.otherMonsterName))
             {
                 Debug.Log("Monster already found by other player");
                 return;
