@@ -1,10 +1,7 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class QuizManager : MonoBehaviour
 {
@@ -21,7 +18,6 @@ public class QuizManager : MonoBehaviour
     {
         quizCanvas.SetActive(false);
         StartCoroutine(WaitForMeshToSpawn());
-        LoadQuestionsFromJson();
     }
 
     private IEnumerator WaitForMeshToSpawn()
@@ -37,10 +33,9 @@ public class QuizManager : MonoBehaviour
             foreach (Health health in healthComponents)
             {
                 Monster monster = health.GetComponentInParent<Monster>();
-                Debug.Log("Monster: " + monster.monsterName);
-                Debug.Log("NetworkManager: " + NetworkManager.monsterName);
                 if (monster != null && monster.monsterName == NetworkManager.monsterName)
                 {
+                    LoadQuestionsFromJson();
                     targetHealth = health;
                     break;
                 }
@@ -84,9 +79,11 @@ public class QuizManager : MonoBehaviour
         {
             string wrappedJson = "{\"items\":" + jsonFile.text + "}";
             ListWrapperWrapper monsterData = JsonUtility.FromJson<ListWrapperWrapper>(wrappedJson);
-
+            Debug.Log(monsterData.items.Count);
             foreach (var monster in monsterData.items)
             {
+                Debug.Log("Monster: " + monster.monsterName);
+                Debug.Log("NetworkManager: " + NetworkManager.monsterName);
                 if (monster.monsterName == NetworkManager.monsterName)
                 {
                     questionsAndAnswers = monster.questions;

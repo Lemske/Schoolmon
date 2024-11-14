@@ -1,6 +1,6 @@
 [
   {
-    "name": "Bugsy",
+    "monsterName": "Bugsy",
     "questions": [
       {
         "question": "What is the correct way to declare a variable in Java?",
@@ -110,7 +110,7 @@
     ]
   },
   {
-    "name": "Realist",
+    "monsterName": "Realist",
     "questions": [
       {
         "question": "What does XR stand for?",
