@@ -12,7 +12,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static string monsterName;
     public static string otherMonsterName;
     public static bool pl1Ready = false;
-    public static bool pl2Ready = true;
+    public static bool pl2Ready = false;
 
     private void Awake()
     {
