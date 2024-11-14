@@ -6,6 +6,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
 {
     [SerializeField] public Vector3 WantedMonPosition = new Vector3(0, 0.5f, 0);
     [SerializeField] private bool isDeadTESTING = false;
+    public Health health { get; private set; }
     private bool hasEnded = false;
     public string monsterName { get; set; }
     public Inactive inactive = new Inactive();
@@ -20,6 +21,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     void Start()
     {
         state = inactive;
+        health = GetComponent<Health>();
     }
 
     public void UpdateState(IMonsterState state)

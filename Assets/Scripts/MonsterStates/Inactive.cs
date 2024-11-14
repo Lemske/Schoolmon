@@ -40,7 +40,7 @@ public class Inactive : IMonsterState
         {
             monster.state = monster.spawningTest;
             currentTimeNeeded = timeNeeded;
-
+            monster.health.TurnOnHealthBar();
             if (NetworkManager.instance == null) //For test scene
             {
                 Debug.Log("NetworkManager instance is null");
@@ -62,7 +62,6 @@ public class Inactive : IMonsterState
 
             NetworkManager.PLAYER otherPlayer = NetworkManager.thisPlayer == NetworkManager.PLAYER.PLAYER1 ? NetworkManager.PLAYER.PLAYER2 : NetworkManager.PLAYER.PLAYER1;
             NetworkManager.instance.photonView.RPC("MonsterSelected", RpcTarget.All, otherPlayer.ToString(), monster.monsterName, NetworkManager.thisPlayer.ToString());
-
             return;
         }
         prevCardPosition = cardPosition;

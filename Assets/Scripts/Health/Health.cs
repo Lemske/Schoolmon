@@ -20,6 +20,15 @@ public class Health : MonoBehaviour
         monster = GetComponent<Monster>();
     }
 
+    public void TurnOffHealthBar()
+    {
+        healthBarManager.TurnOffHealthBar(this);
+    }
+
+    public void TurnOnHealthBar()
+    {
+        healthBarManager.TurnOnHealthBar(this);
+    }
 
     public void TakeDamage(int amount)
     {
@@ -30,13 +39,4 @@ public class Health : MonoBehaviour
             monster.EndGame(); //Todo: Weird implementation for this code
         }
     }
-
-    void Destroy()
-    {
-
-        healthBarManager.DestroyHealthBar(this);
-    }
-
-
-
 }

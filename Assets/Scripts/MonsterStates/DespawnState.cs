@@ -22,6 +22,7 @@ public class DespawnState : IMonsterState
             if (!isDespawning)
             {
                 isDespawning = true;
+                monster.health.TurnOffHealthBar();
                 if (monster.monsterName == NetworkManager.monsterName) //Only the player will despawn their own monster, should be handled better and should use some math to help the two phones to understand the layout
                 {
                     NetworkManager.instance.photonView.RPC("MonsterDeselected", RpcTarget.All, NetworkManager.thisPlayer.ToString());

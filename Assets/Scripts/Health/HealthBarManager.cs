@@ -13,6 +13,7 @@ public class HealthBarManager : MonoBehaviour
         var healthBar = Instantiate(healthBarPrefab, transform);
         healthBars.Add(healthBar.GetComponent<HealthBar>());
         healthBar.GetComponent<HealthBar>().Health = health;
+        healthBar.SetActive(false);
     }
 
     void Update()
@@ -21,6 +22,16 @@ public class HealthBarManager : MonoBehaviour
         {
             healthBar.transform.position = Camera.main.WorldToScreenPoint(healthBar.Health.transform.position + Vector3.up * offset);
         }
+    }
+
+    public void TurnOffHealthBar(Health health)
+    {
+        healthBars.Find(healthBar => healthBar.Health == health).gameObject.SetActive(false);
+    }
+
+    public void TurnOnHealthBar(Health health)
+    {
+        healthBars.Find(healthBar => healthBar.Health == health).gameObject.SetActive(true);
     }
 
     public void DestroyHealthBar(Health health)
