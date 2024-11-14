@@ -33,7 +33,7 @@ public class QuizManager : MonoBehaviour
             foreach (Health health in healthComponents)
             {
                 Monster monster = health.GetComponentInParent<Monster>();
-                if (monster != null && monster.monsterName == NetworkManager.monsterName)
+                if (monster != null && monster.monsterName == NetworkManager.monsterName && NetworkManager.pl1Ready && NetworkManager.pl2Ready)
                 {
                     LoadQuestionsFromJson();
                     targetHealth = health;

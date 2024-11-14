@@ -11,6 +11,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static PLAYER thisPlayer;
     public static string monsterName;
     public static string otherMonsterName;
+    public static bool pl1Ready = false;
+    public static bool pl2Ready = false;
 
     private void Awake()
     {
@@ -45,15 +47,17 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     }
 
     [PunRPC]
-    public void MonsterSelected(string player, string monsterName)
+    public void MonsterSelected(string player, string monsterName, string sendFrom)
     {
         Debug.Log("Monster selected: " + monsterName + " by " + player);
         if (player.Equals(thisPlayer.ToString()))
         {
+            pl1Ready = player.Equals(sendFrom);
             NetworkManager.monsterName = monsterName;
         }
         else
         {
+            pl2Ready = player.Equals(sendFrom);
             otherMonsterName = monsterName;
         }
     }

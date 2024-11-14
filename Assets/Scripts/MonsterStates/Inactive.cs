@@ -57,28 +57,20 @@ public class Inactive : IMonsterState
                 return;
             }
 
-            NetworkManager.PLAYER player = NetworkManager.monsterName == null ? NetworkManager.thisPlayer
-            : NetworkManager.thisPlayer == NetworkManager.PLAYER.PLAYER1 ? NetworkManager.PLAYER.PLAYER2 : NetworkManager.PLAYER.PLAYER1;
-
-            bool notLegal;
-
-            if (player == NetworkManager.thisPlayer)
+            if (monster.monsterName.Equals(NetworkManager.monsterName))
             {
-                notLegal = NetworkManager.otherMonsterName != null && NetworkManager.otherMonsterName.Equals(monster.monsterName);
-            }
-            else
-            {
-                notLegal = NetworkManager.monsterName != null && NetworkManager.monsterName.Equals(monster.monsterName);
-            }
-
-            if (notLegal)
-            {
-                Debug.Log("Monster already selected");
+                Debug.Log("Monster already found by other player");
                 return;
             }
 
-            NetworkManager.monsterName = monster.monsterName;
-            NetworkManager.instance.photonView.RPC("MonsterSelected", RpcTarget.All, player.ToString(), monster.monsterName);
+            if (NetworkManager.monsterName == null || NetworkManager.monsterName.Equals(monster.monsterName))
+            {
+                NetworkManager.instance.photonView.RPC("MonsterSelected", RpcTarget.All, NetworkManager.thisPlayer.ToString(), monster.monsterName, NetworkManager.thisPlayer.ToString());
+                return;
+            }
+
+            NetworkManager.PLAYER otherPlayer = NetworkManager.thisPlayer == NetworkManager.PLAYER.PLAYER1 ? NetworkManager.PLAYER.PLAYER2 : NetworkManager.PLAYER.PLAYER1;
+            NetworkManager.instance.photonView.RPC("MonsterSelected", RpcTarget.All, otherPlayer.ToString(), monster.monsterName, NetworkManager.thisPlayer.ToString());
 
             return;
         }
