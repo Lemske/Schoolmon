@@ -81,17 +81,8 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     [PunRPC]
     public void PlayerLost(string winner)
     {
-        NetworkManager.winner = winner == PhotonNetwork.NickName ? "You" : winner;
-        if (PhotonNetwork.IsMasterClient)
-        {
-            PhotonNetwork.CurrentRoom.IsOpen = false;
-            PhotonNetwork.CurrentRoom.IsVisible = false;
-            photonView.RPC("EndSessionForAllPlayers", RpcTarget.All);
-        }
-        else
-        {
-            StartCoroutine(WaitForDisconnectAndLoadScene());
-        }
+        Debug.Log("Player lost: " + winner);
+        SceneManager.LoadScene("EndGame");
     }
     [PunRPC]
     public void EndSessionForAllPlayers()
