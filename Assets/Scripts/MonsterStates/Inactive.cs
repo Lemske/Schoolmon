@@ -48,15 +48,6 @@ public class Inactive : IMonsterState
                 return;
             }
 
-            /* This if statement is simply so we don't keep assigning things again in case one phone thinks a mon has despawned and spawned again*/
-            if (NetworkManager.monsterName != null && NetworkManager.otherMonsterName != null)
-            {
-                Debug.Log("Other: " + NetworkManager.otherMonsterName);
-                Debug.Log("This: " + NetworkManager.monsterName);
-                Debug.Log("Both monsters are already selected");
-                return;
-            }
-
             if (monster.monsterName.Equals(NetworkManager.monsterName))
             {
                 Debug.Log("Monster already found by other player");
