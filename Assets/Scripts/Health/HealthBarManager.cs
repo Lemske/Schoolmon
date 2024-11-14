@@ -13,7 +13,6 @@ public class HealthBarManager : MonoBehaviour
         var healthBar = Instantiate(healthBarPrefab, transform);
         healthBars.Add(healthBar.GetComponent<HealthBar>());
         healthBar.GetComponent<HealthBar>().Health = health;
-        healthBar.SetActive(false);
     }
 
     void Update()

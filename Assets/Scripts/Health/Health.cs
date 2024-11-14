@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Health : MonoBehaviour
 {
-
     private HealthBarManager healthBarManager;
 
     public event Action<int> OnHealthChanged;
@@ -11,13 +10,20 @@ public class Health : MonoBehaviour
 
     public int currentHealth;
     public int maxHealth;
+    public static int pendingDamage = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         healthBarManager = FindFirstObjectByType<HealthBarManager>();
-        healthBarManager.SpawnHealthBar(this);
         monster = GetComponent<Monster>();
+        healthBarManager.SpawnHealthBar(this);
+        if (pendingDamage > 0 && monster.monsterName == NetworkManager.otherMonsterName)
+        {
+            TakeDamage(pendingDamage);
+            pendingDamage = 0;
+        }
+        healthBarManager.TurnOffHealthBar(this);
     }
 
     public void TurnOffHealthBar()

@@ -164,6 +164,7 @@ public class QuizManager : MonoBehaviour
                     quizCanvas.SetActive(false);
                 }
             }
+            Health.pendingDamage += amount;
         }
     }
 
