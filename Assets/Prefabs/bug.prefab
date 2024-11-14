@@ -51,7 +51,7 @@ MonoBehaviour:
   inactive:
     legalCardMovementRadius: 0.01
     legalCardRotationRadius: 0.01
-    timeNeeded: 0
+    timeNeeded: 0.5
   spawningTest:
     heightOverWantedPosition: 0.1
     curveSpeed: 1

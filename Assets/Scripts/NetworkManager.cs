@@ -12,7 +12,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public static string monsterName;
     public static string otherMonsterName;
     public static bool pl1Ready = false;
-    public static bool pl2Ready = false;
+    public static bool pl2Ready = true;
 
     private void Awake()
     {
@@ -97,6 +97,20 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void EndSessionForAllPlayers()
     {
         StartCoroutine(WaitForDisconnectAndLoadScene());
+    }
+
+    [PunRPC]
+    public void DealtDamage(int amount, string from)
+    {
+        QuizManager quizManager = FindObjectOfType<QuizManager>();
+        if (from.Equals(thisPlayer.ToString()))
+        {
+            quizManager.DealtDamage(amount);
+        }
+        else
+        {
+            quizManager.TakeDamage(amount);
+        }
     }
 
     private IEnumerator WaitForDisconnectAndLoadScene()

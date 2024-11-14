@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Photon.Pun;
 using TMPro;
 using UnityEngine;
 
@@ -112,16 +113,7 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
-        // Apply damage to the target mesh
-        if (targetHealth != null)
-        {
-            targetHealth.TakeDamage(damageAmount);
-            if (targetHealth.currentHealth <= 0)
-            {
-                //Destroy(targetHealth.gameObject);
-                quizCanvas.SetActive(false);
-            }
-        }
+        NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, damageAmount, NetworkManager.thisPlayer.ToString());
         questionsAndAnswers.RemoveAt(currentQuestion);
         generateQuestion();
     }
@@ -142,6 +134,35 @@ public class QuizManager : MonoBehaviour
             if (questionsAndAnswers[currentQuestion].correctAnswer == i + 1)
             {
                 options[i].GetComponent<AnswerScript>().isCorrect = true;
+            }
+        }
+    }
+
+    public void TakeDamage(int amount)
+    {
+        if (targetHealth != null)
+        {
+            targetHealth.TakeDamage(amount);
+            if (targetHealth.currentHealth <= 0)
+            {
+                quizCanvas.SetActive(false);
+            }
+        }
+    }
+
+    public void DealtDamage(int amount)
+    {
+        Health[] healthComponents = FindObjectsOfType<Health>();
+        foreach (Health health in healthComponents)
+        {
+            Monster monster = health.GetComponentInParent<Monster>();
+            if (monster.monsterName == NetworkManager.otherMonsterName)
+            {
+                health.TakeDamage(amount);
+                if (health.currentHealth <= 0)
+                {
+                    quizCanvas.SetActive(false);
+                }
             }
         }
     }
