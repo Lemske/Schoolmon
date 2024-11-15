@@ -15,6 +15,9 @@ public class QuizManager : MonoBehaviour
     public int damageAmount;  // Damage amount to apply for a correct answer
     public float fadeDuration = 1f; // Duration of the fade effect
 
+    private bool playerFinishedTurn = false;
+    private bool otherPlayerFinishedTurn = false;
+
     private void Start()
     {
         quizCanvas.SetActive(false);
@@ -113,15 +116,18 @@ public class QuizManager : MonoBehaviour
 
     public void correct()
     {
-        NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, damageAmount, NetworkManager.thisPlayer.ToString());
         questionsAndAnswers.RemoveAt(currentQuestion);
         generateQuestion();
+        quizCanvas.SetActive(false);
+        NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, damageAmount, NetworkManager.thisPlayer.ToString());
     }
 
     public void wrong()
     {
         questionsAndAnswers.RemoveAt(currentQuestion);
         generateQuestion();
+        quizCanvas.SetActive(false);
+        NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, 0, NetworkManager.thisPlayer.ToString());
     }
 
     void SetAnswers()
@@ -148,6 +154,7 @@ public class QuizManager : MonoBehaviour
                 quizCanvas.SetActive(false);
             }
         }
+        turnManage(false);
     }
 
     public void DealtDamage(int amount)
@@ -165,6 +172,7 @@ public class QuizManager : MonoBehaviour
                 }
             }
             Health.pendingDamage += amount;
+            turnManage(true);
         }
     }
 
@@ -180,6 +188,24 @@ public class QuizManager : MonoBehaviour
         else
         {
             questionText.text = "Out of questions";
+        }
+    }
+
+    private void turnManage(bool thisPlayer)
+    {
+        if (thisPlayer)
+        {
+            playerFinishedTurn = true;
+        }
+        else
+        {
+            otherPlayerFinishedTurn = true;
+        }
+        if (playerFinishedTurn && otherPlayerFinishedTurn)
+        {
+            playerFinishedTurn = false;
+            otherPlayerFinishedTurn = false;
+            quizCanvas.SetActive(true);
         }
     }
 }
