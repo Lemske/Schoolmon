@@ -1,4 +1,5 @@
 using Photon.Pun;
+using Unity.VisualScripting;
 using UnityEngine;
 [System.Serializable]
 public class DespawnState : IMonsterState
@@ -8,6 +9,9 @@ public class DespawnState : IMonsterState
     private Vector3 lastCardPosition;
     private Quaternion lastCardRotation;
     [SerializeField] Vector3 legalPlayZone = new Vector3(0.1f, 0.05f, 0.02f);
+    private Vector3 cardStartPosition;
+    private Quaternion cardStartRotation;
+    private bool startPosRosNeedsUpdate = true;
     public void Init(Monster monster)
     {
         this.monster = monster;
@@ -17,6 +21,12 @@ public class DespawnState : IMonsterState
 
     public void Update()
     {
+        if (startPosRosNeedsUpdate)
+        {
+            cardStartPosition = monster.parentCardPosition;
+            cardStartRotation = monster.parentCardRotation;
+            startPosRosNeedsUpdate = false;
+        }
         if (!WithinLegalPlayZone() || isDespawning)
         {
             if (!isDespawning)
@@ -33,6 +43,7 @@ public class DespawnState : IMonsterState
             if (monster.transform.localScale == Vector3.zero)
             {
                 isDespawning = false;
+                startPosRosNeedsUpdate = true;
                 monster.UpdateState(monster.state = monster.inactive);
             }
         }
@@ -42,9 +53,9 @@ public class DespawnState : IMonsterState
 
     public bool WithinLegalPlayZone()
     {
-        Vector3 localPoint = Quaternion.Inverse(lastCardRotation) * (monster.parentCardPosition - lastCardPosition);
+        Vector3 localPoint = cardStartRotation * (monster.parentCardPosition - cardStartPosition);
         Debug.DrawLine(Vector3.zero, localPoint, Color.red);
-        Vector3 halfExtents = legalPlayZone;
+        Vector3 halfExtents = legalPlayZone * 0.5f;
         bool isWithin = localPoint.x >= -halfExtents.x && localPoint.x <= halfExtents.x &&
                         localPoint.y >= -halfExtents.y && localPoint.y <= halfExtents.y &&
                         localPoint.z >= -halfExtents.z && localPoint.z <= halfExtents.z;
@@ -54,9 +65,13 @@ public class DespawnState : IMonsterState
 
     public void OnDrawGizmos()
     {
+        if (cardStartPosition == Vector3.zero || cardStartRotation == Quaternion.identity)
+        {
+            return;
+        }
         Gizmos.color = new Color(1, 0, 0, 0.05f);
 
-        Gizmos.matrix = Matrix4x4.TRS(monster.parentCardPosition, monster.parentCardRotation, Vector3.one);
+        Gizmos.matrix = Matrix4x4.TRS(cardStartPosition, cardStartRotation, Vector3.one);
         Gizmos.DrawCube(Vector3.zero, legalPlayZone);
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(Vector3.zero, legalPlayZone);
