@@ -17,6 +17,7 @@ public class QuizManager : MonoBehaviour
 
     private bool playerFinishedTurn = false;
     private bool otherPlayerFinishedTurn = false;
+    [SerializeField] private TextMeshProUGUI waitingText;
 
     private void Start()
     {
@@ -48,7 +49,7 @@ public class QuizManager : MonoBehaviour
         }
 
         Debug.Log("Health component assigned to QuizManager");
-        generateQuestion();
+        GenerateQuestion();
         yield return StartCoroutine(FadeInCanvas()); // Wait for the canvas to fade in
 
 
@@ -117,16 +118,16 @@ public class QuizManager : MonoBehaviour
     public void correct()
     {
         questionsAndAnswers.RemoveAt(currentQuestion);
-        generateQuestion();
-        quizCanvas.SetActive(false);
+        GenerateQuestion();
+        AnsweredQuestion();
         NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, damageAmount, NetworkManager.thisPlayer.ToString());
     }
 
     public void wrong()
     {
         questionsAndAnswers.RemoveAt(currentQuestion);
-        generateQuestion();
-        quizCanvas.SetActive(false);
+        GenerateQuestion();
+        AnsweredQuestion();
         NetworkManager.instance.photonView.RPC("DealtDamage", RpcTarget.All, 0, NetworkManager.thisPlayer.ToString());
     }
 
@@ -176,7 +177,7 @@ public class QuizManager : MonoBehaviour
         }
     }
 
-    void generateQuestion()
+    void GenerateQuestion()
     {
         if (questionsAndAnswers.Count > 0)
         {
@@ -189,6 +190,12 @@ public class QuizManager : MonoBehaviour
         {
             questionText.text = "Out of questions";
         }
+    }
+
+    private void AnsweredQuestion()
+    {
+        quizCanvas.SetActive(false);
+        waitingText.gameObject.SetActive(true);
     }
 
     private void turnManage(bool thisPlayer)
@@ -205,6 +212,7 @@ public class QuizManager : MonoBehaviour
         {
             playerFinishedTurn = false;
             otherPlayerFinishedTurn = false;
+            waitingText.gameObject.SetActive(false);
             quizCanvas.SetActive(true);
         }
     }
