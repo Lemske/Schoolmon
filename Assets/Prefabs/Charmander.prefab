@@ -481,6 +481,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WantedMonPosition: {x: 0, y: 0.5, z: 0}
+  isDeadTESTING: 0
   inactive:
     legalCardMovementRadius: 0.01
     legalCardRotationRadius: 0.01
@@ -492,7 +493,10 @@ MonoBehaviour:
     idleMovementSpeed: 1
     idleRotationSpeed: 1
   despawnState:
-    legalPlayZone: {x: 0.1, y: 0.05, z: 0.02}
+    legalPlayZone: {x: 0.4, y: 0.05, z: 0.4}
+    shouldBeVisibleRadius: 1
+    nonVisibleDespawnTime: 2
+  cardzone: {x: 0.0859, y: 0.005, z: 0.1199141}
 --- !u!1 &9214038865990126993
 GameObject:
   m_ObjectHideFlags: 0

@@ -45,7 +45,7 @@ public class DespawnState : IMonsterState
             cardStartRotation = monster.parentCardRotation;
             startPosRosNeedsUpdate = false;
         }
-        if (!WithinLegalPlayZone() || isDespawning)
+        if (!BoxWithinLegalPlayZone() || isDespawning)
         {
             if (!isDespawning)
             {
@@ -72,7 +72,7 @@ public class DespawnState : IMonsterState
         }
     }
 
-    public bool WithinLegalPlayZone()
+    /*public bool WithinLegalPlayZone()
     {
         Vector3 localPoint = cardStartRotation * (monster.parentCardPosition - cardStartPosition);
         Debug.DrawLine(Vector3.zero, localPoint, Color.red);
@@ -82,10 +82,14 @@ public class DespawnState : IMonsterState
                         localPoint.z >= -halfExtents.z && localPoint.z <= halfExtents.z;
 
         return isWithin;
-    }
+    }*/
 
     private bool IsObjectWithinSphere()
     {
+        if (origin == null)
+        {
+            return false; //Fails here when I stop editor, got tired of it
+        }
         return Vector3.Distance(monster.parentCardPosition, origin.transform.position) <= shouldBeVisibleRadius;
     }
 
@@ -93,6 +97,49 @@ public class DespawnState : IMonsterState
     {
         Vector3 ViewportPoint = origin.WorldToViewportPoint(monster.parentCardPosition);
         return ViewportPoint.x >= 0 && ViewportPoint.x <= 1 && ViewportPoint.y >= 0 && ViewportPoint.y <= 1 && ViewportPoint.z >= 0;
+    }
+
+    public bool BoxWithinLegalPlayZone()
+    {
+        Vector3 localPosition = cardStartRotation * (monster.parentCardPosition - cardStartPosition);
+        Quaternion localRotation = Quaternion.Inverse(cardStartRotation) * monster.parentCardRotation;
+
+        Vector3 halfExtentsZone = legalPlayZone * 0.5f;
+        Vector3 halfExtentsBox = monster.cardzone * 0.5f;
+
+        Vector3[] boxCorners = GetBoxCorners(localPosition, localRotation, halfExtentsBox);
+
+        foreach (var corner in boxCorners)
+        {
+            if (corner.x < -halfExtentsZone.x || corner.x > halfExtentsZone.x ||
+                corner.y < -halfExtentsZone.y || corner.y > halfExtentsZone.y ||
+                corner.z < -halfExtentsZone.z || corner.z > halfExtentsZone.z)
+            {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+    private Vector3[] GetBoxCorners(Vector3 position, Quaternion rotation, Vector3 halfExtents)
+    {
+        Vector3[] corners = new Vector3[]{
+            calculateLocalCorner(new Vector3(-halfExtents.x, -halfExtents.y, -halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(-halfExtents.x, -halfExtents.y, halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(-halfExtents.x, halfExtents.y, -halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(-halfExtents.x, halfExtents.y, halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(halfExtents.x, -halfExtents.y, -halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(halfExtents.x, -halfExtents.y, halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(halfExtents.x, halfExtents.y, -halfExtents.z), position, rotation),
+            calculateLocalCorner(new Vector3(halfExtents.x, halfExtents.y, halfExtents.z), position, rotation)
+        };
+        return corners;
+    }
+
+    private Vector3 calculateLocalCorner(Vector3 corner, Vector3 localPosition, Quaternion localRotation)
+    {
+        return localPosition + localRotation * corner;
     }
 
     public void OnDrawGizmos()

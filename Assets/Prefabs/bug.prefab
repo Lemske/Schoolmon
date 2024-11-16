@@ -60,7 +60,10 @@ MonoBehaviour:
     idleMovementSpeed: 1
     idleRotationSpeed: 1
   despawnState:
-    legalPlayZone: {x: 0.1, y: 0.05, z: 0.02}
+    legalPlayZone: {x: 0.4, y: 0.05, z: 0.4}
+    shouldBeVisibleRadius: 0.22
+    nonVisibleDespawnTime: 2
+  cardzone: {x: 0.0859, y: 0.005, z: 0.1199141}
 --- !u!114 &7179901005683147413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   topDirectionOffset: {x: 0, y: 0.1, z: 0}
+  topDirectionSpeed: 3
 --- !u!1001 &7840615326088429308
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -19,6 +19,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     public Quaternion parentCardRotation { get; set; }
     public float timeSinceLastCardUpdate { get; set; }
     public Camera origin { get; private set; }
+    public Vector3 cardzone = new Vector3(0.0859f, 0.005f, 0.1199141f);//TODO: Should get this from the card reference
 
     void Start()
     {
@@ -86,6 +87,11 @@ public class Monster : MonoBehaviour, IParentCardUpdater
 
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.grey;
+        Gizmos.matrix = Matrix4x4.TRS(parentCardPosition, parentCardRotation, Vector3.one);
+        Gizmos.DrawWireCube(Vector3.zero, cardzone);
+        Gizmos.matrix = Matrix4x4.identity;
+
         Gizmos.color = Color.red;
         Gizmos.DrawSphere(CalculateWantedMonPosition(), 0.01f);
 
