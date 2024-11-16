@@ -20,7 +20,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     public float timeSinceLastCardUpdate { get; set; }
     public Camera origin { get; private set; }
     public Vector3 cardzone = new Vector3(0.0859f, 0.005f, 0.1199141f);//TODO: Should get this from the card reference
-
+    private GameObject cube;
     void Start()
     {
         state = inactive;
@@ -43,6 +43,14 @@ public class Monster : MonoBehaviour, IParentCardUpdater
         spawningTest.Init(this);
         idleState.Init(this);
         despawnState.Init(this);
+
+        /*Temp*/
+        GameObject cube = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        cube.transform.localScale = cardzone;
+        cube.transform.position = parentCardPosition - new Vector3(0, 0, 0.1f);
+        cube.transform.rotation = parentCardRotation;
+        cube.GetComponent<Renderer>().material.color = new Color(0.5f, 0.5f, 0.5f, 0.3f);
+        this.cube = cube;
     }
 
     public void UpdateParentCard(Vector3 position, Quaternion rotation)
@@ -54,6 +62,9 @@ public class Monster : MonoBehaviour, IParentCardUpdater
 
     void Update()
     {
+        cube.transform.position = parentCardPosition - new Vector3(0, 0, 0.1f);
+        cube.transform.rotation = parentCardRotation;
+
         state.Update();
         if (isDeadTESTING && !hasEnded)
         {
