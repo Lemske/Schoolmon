@@ -17,11 +17,14 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     public IMonsterState state { get; set; }
     public Vector3 parentCardPosition { get; set; }
     public Quaternion parentCardRotation { get; set; }
+    public float timeSinceLastCardUpdate { get; set; }
+    public Camera origin { get; private set; }
 
     void Start()
     {
         state = inactive;
         health = GetComponent<Health>();
+        origin = FindObjectOfType<Camera>();
     }
 
     public void UpdateState(IMonsterState state)
@@ -45,6 +48,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     {
         parentCardPosition = position;
         parentCardRotation = rotation;
+        timeSinceLastCardUpdate = 0;
     }
 
     void Update()
@@ -56,6 +60,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
             Debug.Log("Monster is dead");
             EndGame();
         }
+        timeSinceLastCardUpdate += Time.deltaTime;
     }
 
     public Vector3 CalculateWantedMonPosition()

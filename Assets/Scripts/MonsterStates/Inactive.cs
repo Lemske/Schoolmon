@@ -10,6 +10,7 @@ public class Inactive : IMonsterState
     [SerializeField] private float legalCardMovementRadius = 0.01f;
     [SerializeField] private float legalCardRotationRadius = 0.01f;
     [SerializeField] private float timeNeeded = 4f;
+    private bool spawnIsLegal = false;
     private float currentTimeNeeded;
 
     public void Init(Monster monster)
@@ -25,19 +26,25 @@ public class Inactive : IMonsterState
     {
         Vector3 cardPosition = monster.parentCardPosition;
         Quaternion cardRotation = monster.parentCardRotation;
-
         //Debug.Log(Vector3.Distance(prevCardPosition, cardPosition) + " && " + Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized));
         if (Vector3.Distance(prevCardPosition, cardPosition) <= legalCardMovementRadius && Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized) <= legalCardRotationRadius)
         {
+            Debug.Log("Card Update: " + monster.timeSinceLastCardUpdate);
+            if (monster.timeSinceLastCardUpdate <= 0.1f)
+            {
+                spawnIsLegal = true;
+            }
             currentTimeNeeded -= Time.deltaTime;
         }
         else
         {
+            spawnIsLegal = false;
             currentTimeNeeded = timeNeeded;
         }
 
-        if (currentTimeNeeded <= 0)
+        if (currentTimeNeeded <= 0 && spawnIsLegal)
         {
+            spawnIsLegal = false;
             monster.state = monster.spawningTest;
             currentTimeNeeded = timeNeeded;
             monster.health.TurnOnHealthBar();
