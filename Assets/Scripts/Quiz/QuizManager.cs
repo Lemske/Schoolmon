@@ -172,9 +172,12 @@ public class QuizManager : MonoBehaviour
                     quizCanvas.SetActive(false);
                 }
             }
-            Health.pendingDamage += amount;
-            turnManage(true);
+            else
+            {
+                Health.pendingDamage += amount;
+            }
         }
+        turnManage(true);
     }
 
     void GenerateQuestion()
