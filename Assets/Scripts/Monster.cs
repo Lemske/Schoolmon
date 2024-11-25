@@ -1,3 +1,4 @@
+using System;
 using Photon.Pun;
 using Photon.Realtime;
 using UnityEngine;
@@ -54,7 +55,7 @@ public class Monster : MonoBehaviour, IParentCardUpdater
     void Update()
     {
         state.Update();
-        if (isDeadTESTING && !hasEnded)
+        if (isDeadTESTING && !hasEnded && monsterName.Equals(NetworkManager.monsterName))
         {
             hasEnded = true;
             Debug.Log("Monster is dead");
@@ -75,8 +76,9 @@ public class Monster : MonoBehaviour, IParentCardUpdater
             string winner = "Someone";
             foreach (Player player in PhotonNetwork.PlayerList)
             {
-                if (player.NickName != PhotonNetwork.NickName)
+                if (!player.NickName.Equals(PhotonNetwork.NickName))
                 {
+                    Debug.Log(winner);
                     winner = player.NickName;
                 }
             }
