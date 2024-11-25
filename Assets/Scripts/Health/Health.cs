@@ -40,7 +40,7 @@ public class Health : MonoBehaviour
     {
         currentHealth -= amount;
         OnHealthChanged?.Invoke(currentHealth);
-        if (currentHealth <= 0 && monster != null)
+        if (currentHealth <= 0 && monster != null && monster.monsterName.Equals(NetworkManager.monsterName))
         {
             monster.EndGame(); //Todo: Weird implementation for this code
         }
