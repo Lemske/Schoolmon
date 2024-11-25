@@ -50,9 +50,9 @@ MonoBehaviour:
   WantedMonPosition: {x: 0, y: 0.07, z: 0.06}
   isDeadTESTING: 0
   inactive:
-    legalCardMovementRadius: 0.01
-    legalCardRotationRadius: 0.01
-    timeNeeded: 0.5
+    legalCardMovementRadius: 0.5
+    legalCardRotationRadius: 0.5
+    timeNeeded: 0.2
   spawningTest:
     heightOverWantedPosition: 0.1
     curveSpeed: 1

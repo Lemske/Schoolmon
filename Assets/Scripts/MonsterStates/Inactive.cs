@@ -30,7 +30,7 @@ public class Inactive : IMonsterState
         if (Vector3.Distance(prevCardPosition, cardPosition) <= legalCardMovementRadius && Quaternion.Angle(prevCardRotation.normalized, cardRotation.normalized) <= legalCardRotationRadius)
         {
             Debug.Log("Card Update: " + monster.timeSinceLastCardUpdate);
-            if (monster.timeSinceLastCardUpdate <= 0.1f)
+            if (monster.timeSinceLastCardUpdate <= 1f)
             {
                 spawnIsLegal = true;
             }

@@ -82,6 +82,7 @@ public class NetworkManager : MonoBehaviourPunCallbacks
     public void PlayerLost(string winner)
     {
         Debug.Log("Player lost: " + winner);
+        NetworkManager.winner = winner;
         SceneManager.LoadScene("EndGame");
     }
     [PunRPC]
